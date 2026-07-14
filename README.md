@@ -1,4 +1,4 @@
-# 点云降噪赛题 Baseline
+# 点云降噪赛题 Baseline 改
 
 ## 环境安装
 ```bash
@@ -28,7 +28,7 @@ pip install jittor numpy trimesh scipy omegaconf point-cloud-utils
 
 ## 训练
 ```bash
-python run.py --task configs/task/train_vm.yaml
+python run.py --task configs/task/train_octformer.yaml
 ```
 训练权重保存在 `experiments/` 目录下。
 
@@ -39,12 +39,6 @@ python run.py --task configs/task/predict_vm.yaml
 ```
 降噪结果保存在 `results/` 目录下，格式为 `.npy` (float32, shape (N,3))。
 
-## 打包提交
-```bash
-cd results/dataset_test_noisy
-zip -r ../../result.zip shapenet/
-```
-
 ## 提交格式
 每个测试样本一个 `denoised.npy`，目录结构与测试集一致，打包为 `result.zip`：
 ```
@@ -53,14 +47,3 @@ result.zip
     <synset_id>/
       <model_id>/
         denoised.npy    # np.float32, shape (N, 3)
-```
-
-## 本地评测（需要 GT 数据，仅组委会持有）
-```bash
-python evaluate.py \
-    --pred_dir ./results/dataset_test_noisy \
-    --gt_dir ./test_gt \
-    --noisy_dir ./dataset_test_noisy \
-    --mesh_dir ./dataset_train \
-    --workers 8
-```
