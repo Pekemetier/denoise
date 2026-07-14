@@ -1,0 +1,30 @@
+__target__: octformerModule
+
+
+
+norm_size: 0.015
+predict_patch_size: 1000
+predict_patch_mode: 'knn'
+
+num_predict_step: 6
+
+out_feature_channel: 64
+channels: [96, 192, 192]
+num_blocks: [4, 4, 2]
+num_heads: [6, 6, 6]
+encoder_k: 16
+loss_k: -1
+decoder_type: 'near'
+encoder_hidden_dim: 128
+decoder_hidden_dim: 32
+decode_num_block: 4
+encoder_gather: 'max'
+patch_size: 32
+dilation: 4
+drop_path: 0.1
+stem_down: 0
+fpn_channel: [192, 128, 96]
+use_dwconv: True
+head_drop: 0.1
+merge_voxel: False
+decoder_k: 1

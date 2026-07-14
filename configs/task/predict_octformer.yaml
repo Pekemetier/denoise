@@ -1,0 +1,14 @@
+mode: predict
+debug: False
+load_ckpt: experiments/vm/checkpoint_20.pkl
+
+components:
+  data: predict
+  transform: predict
+  system: vm
+  model: octformer
+
+writer:
+  __target__: vm
+  save_dir: tmp_predict
+  save_name: denoised

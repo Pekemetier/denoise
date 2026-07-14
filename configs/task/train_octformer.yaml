@@ -1,0 +1,28 @@
+mode: train
+debug: False
+load_ckpt: experiments/vm/checkpoint_20.pkl
+
+# ckpt_save_dir: experiments_pcn
+# ckpt_save_name: velocity_epoch
+
+components:
+  data: train
+  transform: vm
+  system: vm
+  model: octformer  # 引用上面的模型配置文件名（不含扩展名）
+
+loss:
+  loss: 1.0
+
+optimizer:
+  __target__: adam
+  lr: 0.000005
+  weight_decay: 0.0001
+
+# scheduler:
+#   __target__: cosine_warmup          # 自定义名称
+#   num_warmup_steps: 1000             # 预热步数
+#   num_training_steps: 100000         # 总训练步数
+
+trainer:
+  epochs: 80
